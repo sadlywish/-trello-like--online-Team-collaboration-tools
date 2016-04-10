@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Cpuall</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nodeid</th>
+                <td>{{ entity.nodeid }}</td>
+            </tr>
+            <tr>
+                <th>Ctime</th>
+                <td>{{ entity.ctime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Coreid</th>
+                <td>{{ entity.coreid }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
+            </tr>
+            <tr>
+                <th>Sys</th>
+                <td>{{ entity.sys }}</td>
+            </tr>
+            <tr>
+                <th>Idle</th>
+                <td>{{ entity.idle }}</td>
+            </tr>
+            <tr>
+                <th>Iowait</th>
+                <td>{{ entity.iowait }}</td>
+            </tr>
+            <tr>
+                <th>Soft</th>
+                <td>{{ entity.soft }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cpuall') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cpuall_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

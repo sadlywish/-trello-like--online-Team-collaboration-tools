@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>DiskIo</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nodeid</th>
+                <td>{{ entity.nodeid }}</td>
+            </tr>
+            <tr>
+                <th>Ctime</th>
+                <td>{{ entity.ctime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dev</th>
+                <td>{{ entity.dev }}</td>
+            </tr>
+            <tr>
+                <th>Read</th>
+                <td>{{ entity.read }}</td>
+            </tr>
+            <tr>
+                <th>Write</th>
+                <td>{{ entity.write }}</td>
+            </tr>
+            <tr>
+                <th>Readbyte</th>
+                <td>{{ entity.readByte }}</td>
+            </tr>
+            <tr>
+                <th>Writebyte</th>
+                <td>{{ entity.writeByte }}</td>
+            </tr>
+            <tr>
+                <th>Util</th>
+                <td>{{ entity.util }}</td>
+            </tr>
+            <tr>
+                <th>Await</th>
+                <td>{{ entity.await }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('diskio') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('diskio_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

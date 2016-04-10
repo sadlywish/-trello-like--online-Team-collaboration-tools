@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Memory list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nodeid</th>
+                <th>Ctime</th>
+                <th>Load</th>
+                <th>Memused</th>
+                <th>Memshare</th>
+                <th>Memcached</th>
+                <th>Membuffer</th>
+                <th>Memfree</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('memory_show', { 'id': entity.id }) }}">{{ entity.nodeid }}</a></td>
+                <td>{% if entity.ctime %}{{ entity.ctime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.load }}</td>
+                <td>{{ entity.memUsed }}</td>
+                <td>{{ entity.memShare }}</td>
+                <td>{{ entity.memCached }}</td>
+                <td>{{ entity.memBuffer }}</td>
+                <td>{{ entity.memFree }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('memory_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('memory_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('memory_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

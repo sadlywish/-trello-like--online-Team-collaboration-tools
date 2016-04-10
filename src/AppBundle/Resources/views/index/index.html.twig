@@ -1,0 +1,553 @@
+{% extends '::base.html.twig' %}
+
+
+    {% block body -%}
+		<!-- 头：消息提醒、时间、搜索 -->
+        <header id="header" class="media">
+            <a href="" id="menu-toggle"></a> 
+            <a class="logo pull-left" href="index.html.twig">云任务管理系统 1.0</a>
+            
+            <div class="media-body">
+                <div class="media" id="top-menu">
+                    <div class="pull-left tm-icon">
+                        <a data-drawer="messages" class="drawer-toggle" href="">
+                            <i class="sa-top-message"></i>
+                            <i class="n-count animated">5</i>
+                            <span>Messages</span>
+                        </a>
+                    </div>
+                                  
+
+                    <div id="time" class="pull-right">
+                        <span id="hours"></span>
+                        :
+                        <span id="min"></span>
+                        :
+                        <span id="sec"></span>
+                    </div>
+                    
+                    <div class="media-body">
+                        <input type="text" class="main-search">
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="clearfix"></div>
+        
+        <section id="main" class="p-relative" role="main">
+            
+            <!-- Sidebar -->
+            <aside id="sidebar">
+                
+                <!-- Sidbar Widgets -->
+                <div class="side-widgets overflow">
+                    <!-- Profile Menu 管理员信息 -->
+                    <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
+                        <a href="" data-toggle="dropdown">
+                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt="">
+                        </a>
+                        <ul class="dropdown-menu profile-menu">
+                            <li><a href="">My Profile</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
+                            <li><a href="">Messages</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
+                            <li><a href="">Sign Out</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
+                        </ul>
+                        <h4 class="m-0">管理员</h4>
+
+                    </div>
+                    
+                    <!-- Calendar 日历 -->
+                    <div class="s-widget m-b-25">
+                        <div id="sidebar-calendar"></div>
+                    </div>
+                    
+                                        
+                    <!-- Projects 进度条 -->
+                    <div class="s-widget m-b-25">
+                        <h2 class="tile-title">
+                            节点进度
+                        </h2>
+                        
+                        <div class="s-widget-body">
+                            <div class="side-border">
+                                <small>Joomla Website</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="progress-bar tooltips progress-bar-danger" style="width: 60%;" data-original-title="60%">
+                                          <span class="sr-only">60% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>Opencart E-Commerce Website</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-info" style="width: 43%;" data-original-title="43%">
+                                          <span class="sr-only">43% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>Social Media API</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: 81%;" data-original-title="81%">
+                                          <span class="sr-only">81% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>VB.Net Software Package</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 10%;" data-original-title="10%">
+                                          <span class="sr-only">10% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Side Menu 左边导航条 -->
+                <ul class="list-unstyled side-menu">
+                    <li class="active">
+                        <a class="sa-side-home" href="index.html.twig">
+                            <span class="menu-item">Home</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="sa-side-widget" href="">
+                            <span class="menu-item">节点管理</span>
+                        </a>
+                    </li>
+					
+                    <li>
+                        <a class="sa-side-table" href="">
+                            <span class="menu-item">任务管理</span>
+                        </a>
+                    </li>
+					
+                    <li>
+                        <a class="sa-side-form" href="">
+                            <span class="menu-item">Messages</span>
+                        </a>
+                    </li>				
+                    
+					<li>
+                        <a class="sa-side-options" href="">
+                            <span class="menu-item">Options</span>
+                        </a>
+                    </li>
+					
+                    <li>
+                        <a class="sa-side-calendar" href="">
+                            <span class="menu-item">日志</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+            </aside>
+        
+            <!-- Content -->
+            <section id="content" class="container">
+                           
+                <h4 class="page-title">快捷功能</h4>
+                                
+                <!-- Shortcuts -->
+                <div class="block-area shortcut-area">
+                    
+                    <a class="shortcut tile" href="">
+                        <img src="img/shortcuts/calendar.png" alt="">
+                        <small class="t-overflow">日志</small>
+                    </a>
+                    <a class="shortcut tile" href="">
+                        <img src="img/shortcuts/stats.png" alt="">
+                        <small class="t-overflow">节点管理</small>
+                    </a>
+					<a class="shortcut tile" href="">
+                        <img src="img/shortcuts/reports.png" alt="">
+                        <small class="t-overflow">任务管理</small>
+                    </a>
+                    <a class="shortcut tile" href="">
+                        <img src="img/shortcuts/connections.png" alt="">
+                        <small class="t-overflow">Connection</small>
+                    </a>
+                    
+                </div>
+                
+                <hr class="whiter" />
+                                
+                <!-- Main Widgets -->
+               
+                <div class="block-area">
+                    <div class="row">
+                        <div class="col-md-8">
+                                
+                            <!-- Pies -->
+                            <div class="tile text-center">
+                                <div class="tile-dark p-10">
+                                    <div id="CPU" class="pie-chart-tiny" data-percent="0">
+                                        <span id="CPU-1" class="percent"></span>
+                                        <span class="pie-title">CPU use</span>
+                                    </div>
+                                    <div id="RAM" class="pie-chart-tiny" data-percent="0">
+                                        <span id="RAM-1" class="percent"></span>
+                                        <span class="pie-title">RAM use</span>
+                                    </div>
+                                    <div id="Memory" class="pie-chart-tiny" data-percent="0">
+                                        <span id="Memory-1" class="percent"></span>
+                                        <span class="pie-title">Memory use</span>
+                                    </div>
+                                    <div  id="Task" class="pie-chart-tiny" data-percent="0">
+                                        <span id="Task-1" class="percent"></span>
+                                        <span class="pie-title">Task Finished</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  Recent Postings -->
+                            <div class="row">
+								<!-- 任务监控表格 -->
+								<div class="block-area" id="tableHover">
+									<h3 class="block-title">任务监控</h3>
+									<div class="table-responsive overflow">
+										<table class="table table-bordered table-hover tile">
+											<thead>
+												<tr>
+													<th>任务编号</th>
+													<th>所属用户</th>
+													<th>状态</th>
+													<th>运行时长(s)</th>
+													<th>所在节点</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>20140325142033</td>
+													<td>Lei Ting</td>
+													<td>暂停</td>
+													<td>23 </td>
+													<td>172.168.3.211</td>
+												</tr>
+												<tr>
+													<td>20140325131637</td>
+													<td>Kang Zheng</td>
+													<td>正在执行</td>
+													<td>75</td>
+													<td>172.168.3.201</td>
+												</tr>
+												<tr>
+													<td>20140325113553</td>
+													<td>Zhang Sai</td>
+													<td>已完成</td>
+													<td>228</td>
+													<td>Null</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+								<!-- 节点监控表格 -->
+								<div class="block-area" id="tableHover">
+									<h3 class="block-title">节点监控</h3>
+									<div class="table-responsive overflow">
+										<table class="table table-bordered table-hover tile">
+											<thead>
+												<tr>
+													<th>编号</th>
+													<th>IP地址</th>
+                                                    <th>CPU占用率</th>
+                                                    <th>内存占用率</th>
+                                                    <th>硬盘占用率</th>
+													<th>状态</th>
+													<th>排队任务</th>
+												</tr>
+											</thead>
+											<tbody id="nodes">
+
+											</tbody>
+										</table>
+									</div>
+								</div>																
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Dynamic Chart 流量表 -->
+                            <div class="tile">
+                                <h2 class="tile-title">任务量监控</h2>
+                                <div class="tile-config dropdown">
+                                    <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                    <ul class="dropdown-menu pull-right text-right">
+                                        <li><a href="">Refresh</a></li>
+                                        <li><a href="">Settings</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-t-10 p-r-5 p-b-5">
+                                    <div id="dynamic-chart" style="height: 200px"></div>
+                                </div>
+
+                            </div>
+                            
+                            <!-- Activity -->
+                            <div class="tile">
+                                <h2 class="tile-title">历史统计</h2>
+                                <div class="tile-config dropdown">
+                                    <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                    <ul class="dropdown-menu pull-right text-right">
+                                        <li><a href="">Refresh</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="listview narrow">
+                                    
+                                    <div class="media">
+                                        <div class="pull-right">
+                                            <div id="finished" class="counts">0</div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6>历史已完成任务总计</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="media">
+                                        <div class="pull-right">
+                                            <div id="going" class="counts">0</div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6>未完成的任务总计</h6>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="media">
+                                        <div class="pull-right">
+                                            <div id="error" class="counts">0</div>
+                                        </div>
+                                        <div class="media-body">
+                                            <h6>历史报错统计</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+            <!-- Older IE Message -->
+            <!--[if lt IE 9]>
+                <div class="ie-block">
+                    <h1 class="Ops">Ooops!</h1>
+                    <p>You are using an outdated version of Internet Explorer, upgrade to any of the following web browser in order to access the maximum functionality of this website. </p>
+                    <ul class="browsers">
+                        <li>
+                            <a href="https://www.google.com/intl/en/chrome/browser/">
+                                <img src="img/browsers/chrome.png" alt="">
+                                <div>Google Chrome</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.mozilla.org/en-US/firefox/new/">
+                                <img src="img/browsers/firefox.png" alt="">
+                                <div>Mozilla Firefox</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.opera.com/computer/windows">
+                                <img src="img/browsers/opera.png" alt="">
+                                <div>Opera</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://safari.en.softonic.com/">
+                                <img src="img/browsers/safari.png" alt="">
+                                <div>Safari</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-10/worldwide-languages">
+                                <img src="img/browsers/ie.png" alt="">
+                                <div>Internet Explorer(New)</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <p>Upgrade your browser for a Safer and Faster web experience. <br/>Thank you for your patience...</p>
+                </div>   
+            <![endif]-->
+        </section>
+    {% endblock %}
+{% block javascripts %}
+    <script type='text/javascript'>
+        var finished = Math.random()*999999;
+        var error = Math.random()*999999;
+
+        $(function() {
+            if ($('#dynamic-chart')[0]) {
+                var data = [],
+                        totalPoints = 50;
+
+                function getRandomData() {
+                    if (data.length > 0)
+                        data = data.slice(1);
+
+                    while (data.length < totalPoints) {
+                        var prev = data.length > 0 ? data[data.length - 1] : 50,
+                                y = prev + Math.random() * 10 - 5;
+                        if (y < 0) {
+                            y = 0;
+                        } else if (y > 90) {
+                            y = 90;
+                        }
+
+                        data.push(0);
+                    }
+
+                    var res = [];
+                    for (var i = 0; i < data.length; i++) {
+                        res.push([i, data[i]])
+                    }
+
+                    return res;
+                }
+                function setData(newData) {
+                    if (data.length > 0)
+                        data = data.slice(1);
+
+                    while (data.length < totalPoints) {
+                        data.push(newData);
+                    }
+
+                    var res = [];
+                    for (var i = 0; i < data.length; i++) {
+                        res.push([i, data[i]])
+                    }
+
+                    return res;
+                }
+                var plot = $.plot("#dynamic-chart", [ getRandomData() ], {
+                    series: {
+                        label: "Data",
+                        lines: {
+                            show: true,
+                            lineWidth: 1,
+                            fill: 0.25,
+                            //Boolean - Whether the line is curved between points
+                            bezierCurve : true,
+
+                            //Boolean - Whether to show a dot for each point
+                            pointDot : false,
+
+                            //Number - Radius of each point dot in pixels
+                            pointDotRadius : 3,
+
+                            //Number - Pixel width of point dot stroke
+                            pointDotStrokeWidth : 1
+                        },
+
+                        color: 'rgba(255,255,255,0.2)',
+                        shadowSize: 0
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        tickColor: 'rgba(255,255,255,0.15)',
+                        font :{
+                            lineHeight: 13,
+                            style: "normal",
+                            color: "rgba(255,255,255,0.8)"
+                        },
+                        shadowSize: 0
+
+                    },
+                    xaxis: {
+                        tickColor: 'rgba(255,255,255,0.15)',
+                        show: true,
+                        font :{
+                            lineHeight: 13,
+                            style: "normal",
+                            color: "rgba(255,255,255,0.8)"
+                        },
+                        shadowSize: 0,
+                        ticks: [[50, "60s"], [100, "45s"], [150, "30s"], [200, "15s"], [249, "now"]]
+
+                    },
+                    grid: {
+                        borderWidth: 1,
+                        borderColor: 'rgba(255,255,255,0.25)',
+                        labelMargin:10,
+                        hoverable: true,
+                        clickable: true,
+                        mouseActiveRadius:6
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+                function update() {
+                    plot.setData([getRandomData()]);
+                    // Since the axes don't change, we don't need to call plot.setupGrid()
+
+                    plot.draw();
+                    //setTimeout(update, updateInterval);
+                }
+
+                //update();
+
+                $("#dynamic-chart").bind("plothover", function (event, pos, item) {
+                    if (item) {
+                        var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+                        $("#dynamic-chart-tooltip").html(item.series.label + " of " + x + " = " + y).css({top: item.pageY+5, left: item.pageX+5}).fadeIn(200);
+                    }
+                    else {
+                        $("#dynamic-chart-tooltip").hide();
+                    }
+                });
+
+                $("<div id='dynamic-chart-tooltip' class='chart-tooltip'></div>").appendTo("body");
+            }
+            function reflash() {
+                //var test = document.getElementById('test');
+                $.get("{{ path('refresh') }}", callback);
+            }
+
+            function callback(data,status){
+                var test = document.getElementById('test');
+                //test.innerText(data) ;
+                var obj=eval('('+data+')');
+                //var text = "name:"+obj.name+"|text:"+obj.text;
+                if(Math.random()>0.01) {
+                    finished += Math.random()*50;
+                    $("#finished").text(parseInt(finished));
+                }
+                $("#going").text(parseInt( Math.random()*999999+4466844));
+                if(Math.random()>0.2) {
+                    error += Math.random()*10
+                    $("#error").text(parseInt(error));
+                }
+                $("#CPU-1").text(obj.cpu);
+                $("#CPU").closest('.pie-chart-tiny').data('easyPieChart').update(obj.cpu);
+                $("#RAM-1").text(obj.ram);
+                $("#RAM").closest('.pie-chart-tiny').data('easyPieChart').update(obj.ram);
+                $("#Memory-1").text(obj.memory);
+                $("#Memory").closest('.pie-chart-tiny').data('easyPieChart').update(obj.memory);
+                $("#Task-1").text(obj.task);
+                $("#Task").closest('.pie-chart-tiny').data('easyPieChart').update(obj.task);
+                $("#nodes").html(obj.nodes)
+                plot.setData([setData(obj.tasks)]);
+                plot.draw();
+            }
+            reflash();
+            self.setInterval(reflash,5000);
+        });
+
+    </script>
+{% endblock %}

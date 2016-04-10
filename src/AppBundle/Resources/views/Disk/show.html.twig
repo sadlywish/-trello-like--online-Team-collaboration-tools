@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Disk</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nodeid</th>
+                <td>{{ entity.nodeid }}</td>
+            </tr>
+            <tr>
+                <th>Ctime</th>
+                <td>{{ entity.ctime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Mountpoint</th>
+                <td>{{ entity.mountPoint }}</td>
+            </tr>
+            <tr>
+                <th>Used</th>
+                <td>{{ entity.used }}</td>
+            </tr>
+            <tr>
+                <th>Iused</th>
+                <td>{{ entity.iused }}</td>
+            </tr>
+            <tr>
+                <th>Dev</th>
+                <td>{{ entity.dev }}</td>
+            </tr>
+            <tr>
+                <th>Avail</th>
+                <td>{{ entity.avail }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ entity.total }}</td>
+            </tr>
+            <tr>
+                <th>Ifree</th>
+                <td>{{ entity.ifree }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('disk') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('disk_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
